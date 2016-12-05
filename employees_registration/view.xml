@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data> 
+
+            <!-- Tree View -->
+            <record id="view_student_tree" model="ir.ui.view">
+            <field name="name">Employee Tree View</field>
+            <field name="model">employees.employee</field>
+            <field name="arch" type="xml">
+                <tree string="Tree">
+                    <field name="name" />
+                    <field name="email" />
+                    <field name="department" />
+                </tree>
+            </field>
+            </record> 
+
+        <!-- Form View -->
+        <record id="view_student_tree" model="ir.ui.view">
+            <field name="name">Employee Form</field>
+            <field name="model">employees.employee</field>
+            <field name="arch" type="xml">
+                <form string="Employee Form">
+                    <field name="name" />
+                    <field name="email" />
+                    <field name="department" />
+                </form>
+            </field>
+        </record>
+
+        <record id="employees_action" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">employees.employee</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+        </record>
+
+        <!-- Top Menu -->
+        <menuitem name="Employees Menu" id="employess_main_menu"/>
+
+
+        <!-- First Sidebar Menus -->
+        <menuitem name="Employees" id="employees_sidebar_menu" parent="employess_main_menu"/>
+        <menuitem name="Employees" id="employees_sidebar_submenu" parent="employees_sidebar_menu"
+         action='employees_action' /> 
+
+    </data>
+</openerp>
